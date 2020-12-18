@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AircraftServiceImpl implements IAircraftService {
+public class AircraftService implements IAircraftService {
 
 	private final AircraftRepository aircraftRepository;
 	private final IFlightMapper iFlightMapper;
 
 	@Autowired
-	public AircraftServiceImpl(AircraftRepository aircraftRepository, IFlightMapper iFlightMapper) {
+	public AircraftService(AircraftRepository aircraftRepository, IFlightMapper iFlightMapper) {
 		this.aircraftRepository = aircraftRepository;
 		this.iFlightMapper = iFlightMapper;
 	}

@@ -11,6 +11,10 @@
 	<name>immfly-challenge-distributed-services</name>
 	<description>Distributed services layer, contains the service interfaces</description>
 
+	<properties>
+		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.immfly</groupId>
