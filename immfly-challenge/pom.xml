@@ -12,6 +12,7 @@
 	<groupId>com.immfly</groupId>
 	<artifactId>immfly-challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>immfly-challenge</name>
 	<description>Code Challenge for Concatel</description>
 
@@ -102,4 +103,11 @@
 		</plugins>
 	</build>
 
+	<modules>
+		<module>immfly-challenge-domain</module>
+		<module>immfly-challenge-presentation</module>
+		<module>immfly-challenge-distributed-services</module>
+		<module>immfly-challenge-infrastructure</module>
+		<module>immfly-challenge-crosscutting</module>
+	</modules>
 </project>

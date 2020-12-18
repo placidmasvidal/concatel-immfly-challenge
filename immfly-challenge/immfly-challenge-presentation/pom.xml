@@ -1,0 +1,11 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.immfly</groupId>
+    <artifactId>immfly-challenge</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>immfly-challenge-presentation</artifactId>
+  <name>immfly-challenge-presentation</name>
+  <description>Presentation layer, contains the main class, controllers and views</description>
+</project>
