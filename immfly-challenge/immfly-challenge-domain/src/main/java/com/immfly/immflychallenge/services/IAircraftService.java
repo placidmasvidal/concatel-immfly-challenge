@@ -1,10 +1,10 @@
 package com.immfly.immflychallenge.services;
 
-import java.util.List;
+import java.util.Optional;
 
-import com.immfly.immflychallenge.dtos.FlightDto;
+import com.immfly.immflychallenge.entities.Aircraft;
 import com.immfly.immflychallenge.exceptions.AircraftException;
 
 public interface IAircraftService {
-	List<FlightDto> getFlightsByAircraftId(Long aircraftId) throws AircraftException;
+	Optional<Aircraft> findByAircraftId(Long aircraftId) throws AircraftException;
 }
