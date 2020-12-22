@@ -5,7 +5,7 @@ public final class ApiRoutes {
     
     public static final String AIRCRAFT = "/aircraft";
     
-    public static final String AIRCRAFT_RETRIEVE_FLIGHTS_PAGE = "/{tailNumber}";
+    public static final String AIRCRAFT_RETRIEVE_FLIGHT_INFO_PAGE = "/{tailNumber}";
     
     private ApiRoutes() { }
 }

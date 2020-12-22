@@ -50,7 +50,7 @@ public class GenericRepositoryImpl implements GenericRepository{
                 }
 
                 cursorIndex++;
-                callableStatement.registerOutParameter(cursorIndex, OracleTypes.CURSOR);
+//                callableStatement.registerOutParameter(cursorIndex, OracleTypes.CURSOR);
             }
 
             callableStatement.executeUpdate();
