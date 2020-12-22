@@ -1,14 +1,11 @@
 package com.immfly.immflychallenge.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,55 +17,146 @@ public class Flight implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
-	private Long id;
+	private String ident;
 
-	@Column(name="DEPARTURE_TIME")
-	private Date departureTime;
+	@Column(name="FA_FLIGHT_ID")
+	private String faFlightID;
 	
-	@Column(name="LANDING_TIME")
-	private Date landingTime;
+	@Column(name="AIRLINE")
+	private String airline;
 	
-    @ManyToOne
-    @JoinColumn(name = "AIRCRAFT_ID")
-    private Aircraft aircraft;
+	@Column(name="AIRLINE_IATA")
+	private String airline_iata;
+	
+	@Column(name="FLIGHT_NUMBER")
+	private String flightNumber;
+	
+	@Column(name="TAIL_NUMBER")
+	private String tailNumber;
+	
+	@Column(name="TYPE")
+	private String type;
+	
+	@Column(name="CODESHARES")
+	private String codeshares;
+	
+	@Column(name="BLOCKED")
+	private Boolean isBlocked;
+	
+	@Column(name="DIVERTED")
+	private Boolean isDiverted;
+	
+	@Column(name="CANCELLED")
+	private Boolean isCancelled;
+	
+	@Column(name="LOCATION_ID")
+	private Location origin;
+	
+	@Column(name="LOCATION_ID")
+	private Location destination;
 
-
-	public Long getId() {
-		return id;
+	public String getIdent() {
+		return ident;
 	}
 
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdent(String ident) {
+		this.ident = ident;
 	}
 
-	public Date getDepartureTime() {
-		return departureTime;
+	public String getFaFlightID() {
+		return faFlightID;
 	}
 
-
-	public void setDepartureTime(Date departureTime) {
-		this.departureTime = departureTime;
+	public void setFaFlightID(String faFlightID) {
+		this.faFlightID = faFlightID;
 	}
 
-
-	public Date getLandingTime() {
-		return landingTime;
+	public String getAirline() {
+		return airline;
 	}
 
-
-	public void setLandingTime(Date landingTime) {
-		this.landingTime = landingTime;
+	public void setAirline(String airline) {
+		this.airline = airline;
 	}
 
-
-	public Aircraft getAircraft() {
-		return aircraft;
+	public String getAirline_iata() {
+		return airline_iata;
 	}
 
+	public void setAirline_iata(String airline_iata) {
+		this.airline_iata = airline_iata;
+	}
 
-	public void setAircraft(Aircraft aircraft) {
-		this.aircraft = aircraft;
+	public String getFlightNumber() {
+		return flightNumber;
+	}
+
+	public void setFlightNumber(String flightNumber) {
+		this.flightNumber = flightNumber;
+	}
+
+	public String getTailNumber() {
+		return tailNumber;
+	}
+
+	public void setTailNumber(String tailNumber) {
+		this.tailNumber = tailNumber;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getCodeshares() {
+		return codeshares;
+	}
+
+	public void setCodeshares(String codeshares) {
+		this.codeshares = codeshares;
+	}
+
+	public Boolean getIsBlocked() {
+		return isBlocked;
+	}
+
+	public void setIsBlocked(Boolean isBlocked) {
+		this.isBlocked = isBlocked;
+	}
+
+	public Boolean getIsDiverted() {
+		return isDiverted;
+	}
+
+	public void setIsDiverted(Boolean isDiverted) {
+		this.isDiverted = isDiverted;
+	}
+
+	public Boolean getIsCancelled() {
+		return isCancelled;
+	}
+
+	public void setIsCancelled(Boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
+
+	public Location getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(Location origin) {
+		this.origin = origin;
+	}
+
+	public Location getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Location destination) {
+		this.destination = destination;
 	}
     
     

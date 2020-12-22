@@ -28,8 +28,8 @@ public class FlightController {
 	
 	@GetMapping("/{tailNumber}/{flightId}")
     public GenericResponse<FlightDto> getFlightInformationByTailNumber(
-    		@PathVariable("tailNumber") Long tailNumber,
-    		@PathVariable("flightId") Long flightId) throws FlightException{
+    		@PathVariable("tailNumber") String tailNumber,
+    		@PathVariable("flightId") String flightId) throws FlightException{
     	return new GenericResponseBuilder<FlightDto>(flightService.getFlightByTailNumber(tailNumber, flightId)).build();
     }
 	

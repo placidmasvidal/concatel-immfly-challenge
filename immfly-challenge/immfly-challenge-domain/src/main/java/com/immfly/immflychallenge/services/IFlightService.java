@@ -5,6 +5,6 @@ import com.immfly.immflychallenge.exceptions.FlightException;
 
 public interface IFlightService {
 
-	FlightDto getFlightByTailNumber(Long tailNumber, Long flightId)	throws FlightException;
+	FlightDto getFlightByTailNumber(String tailNumber, String flightId)	throws FlightException;
 	
 }
