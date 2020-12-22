@@ -9,24 +9,26 @@ import com.immfly.immflychallenge.generic.CustomRepository;
 import com.immfly.immflychallenge.generic.GenericRepository;
 
 @Repository
-public class AircraftRepositoryImpl implements CustomRepository {
+public class FlightRepositoryImpl implements CustomRepository {
 
-    @Autowired
-    private GenericRepository genericRepository;
+	@Autowired
+	private GenericRepository genericRepository;
 	
 	@Override
 	public <T> List<T> getOne(List<T> params) {
-		return genericRepository.getEntityFromPackage("PGK_AIRCRAFT.get_one_aircraft",params);
+		return genericRepository.getEntityFromPackage("PGK_FLIGHT.get_one_flight",params);
 	}
 
-    @Override
-    public <T> List<T> getList(List<T> params){
-        return genericRepository.getEntityFromPackage("PGK_AIRCRAFT.get_all_aircraft",params);
-    }
-    @Override
-    public <T> void executeSP(List<T> params){
+	@Override
+	public <T> List<T> getList(List<T> params) {
+		return genericRepository.getEntityFromPackage("PGK_FLIGHT.get_all_flight",params);
+	}
+
+	@Override
+	public <T> void executeSP(List<T> params) {
         String spName = params.get(0).toString();
         params.remove(0);
-        genericRepository.executeStoredProcedure(spName, params);
-    }
+        genericRepository.executeStoredProcedure(spName, params);		
+	}
+		
 }
