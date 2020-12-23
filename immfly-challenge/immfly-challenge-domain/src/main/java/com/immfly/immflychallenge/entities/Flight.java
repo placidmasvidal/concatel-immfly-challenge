@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("FLIGHT")
 @Entity
 @Table(name = "FLIGHT")
 public class Flight implements Serializable{
@@ -159,6 +162,20 @@ public class Flight implements Serializable{
 		this.destination = destination;
 	}
     
+    @Override
+    public String toString() {
+        return "Flight{" + "ident='" + ident + '\'' + ", faFlightID='" + faFlightID + '\'' + ", airline=" + airline + ", airline_iata=" + airline_iata + 
+        		", flightNumber=" + flightNumber +
+        		", tailNumber=" + tailNumber +
+        		", type=" + type +
+        		", codeshares=" + codeshares +
+        		", blocked=" + isBlocked +
+        		", diverted=" + isDiverted +
+        		", cancelled=" + isCancelled +
+        		", origin=" + origin +
+        		", destination=" + destination +
+        		'}';
+    }
     
 
 }
