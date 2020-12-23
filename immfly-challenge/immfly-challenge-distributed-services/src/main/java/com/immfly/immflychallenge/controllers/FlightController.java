@@ -1,5 +1,7 @@
 package com.immfly.immflychallenge.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,8 @@ import com.immfly.immflychallenge.utils.ApiRoutes;
 
 public class FlightController {
 
+	Logger logger = LogManager.getLogger(FlightController.class);
+	
 	private IFlightService flightService;
 
 	@Autowired
