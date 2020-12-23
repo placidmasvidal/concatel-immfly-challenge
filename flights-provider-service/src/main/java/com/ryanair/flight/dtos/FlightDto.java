@@ -1,4 +1,4 @@
-package com.ryanair.flights.dtos;
+package com.ryanair.flight.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

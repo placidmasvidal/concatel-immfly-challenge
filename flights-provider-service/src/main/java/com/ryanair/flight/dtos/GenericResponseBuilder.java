@@ -1,4 +1,4 @@
-package com.ryanair.flights.dtos;
+package com.ryanair.flight.dtos;
 
 public final class GenericResponseBuilder<T>
 {

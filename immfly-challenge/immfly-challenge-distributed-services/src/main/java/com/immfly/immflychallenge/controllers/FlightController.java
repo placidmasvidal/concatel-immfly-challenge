@@ -18,7 +18,6 @@ import com.immfly.immflychallenge.utils.ApiRoutes;
 
 public class FlightController {
 
-	@Autowired
 	private IFlightService flightService;
 
 	@Autowired

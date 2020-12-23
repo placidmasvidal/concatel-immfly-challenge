@@ -1,4 +1,4 @@
-package com.ryanair.flights;
+package com.ryanair.flight;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
