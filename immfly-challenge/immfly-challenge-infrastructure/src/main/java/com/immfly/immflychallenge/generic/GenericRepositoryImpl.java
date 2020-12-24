@@ -13,7 +13,9 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.hibernate.internal.SessionImpl;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class GenericRepositoryImpl implements GenericRepository{
 
     @PersistenceContext

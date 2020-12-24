@@ -20,7 +20,7 @@ public class Flight implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
-	private String ident;
+	private String id;
 
 	@Column(name="FA_FLIGHT_ID")
 	private String faFlightID;
@@ -59,11 +59,11 @@ public class Flight implements Serializable{
 	private Location destination;
 
 	public String getIdent() {
-		return ident;
+		return id;
 	}
 
 	public void setIdent(String ident) {
-		this.ident = ident;
+		this.id = ident;
 	}
 
 	public String getFaFlightID() {
@@ -164,7 +164,7 @@ public class Flight implements Serializable{
     
     @Override
     public String toString() {
-        return "Flight{" + "ident='" + ident + '\'' + ", faFlightID='" + faFlightID + '\'' + ", airline=" + airline + ", airline_iata=" + airline_iata + 
+        return "Flight{" + "ident='" + id + '\'' + ", faFlightID='" + faFlightID + '\'' + ", airline=" + airline + ", airline_iata=" + airline_iata + 
         		", flightNumber=" + flightNumber +
         		", tailNumber=" + tailNumber +
         		", type=" + type +

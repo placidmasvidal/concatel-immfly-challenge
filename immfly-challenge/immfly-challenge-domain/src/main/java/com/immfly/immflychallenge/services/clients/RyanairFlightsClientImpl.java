@@ -15,11 +15,11 @@ import com.immfly.immflychallenge.mappers.IFlightMapper;
 import com.immfly.immflychallenge.repositories.FlightRepository;
 
 @Component
-@ConfigurationProperties(prefix = "immfly.flightsclient", ignoreUnknownFields = false)
+//@ConfigurationProperties(prefix = "immfly.flightsclient", ignoreUnknownFields = false)
 public class RyanairFlightsClientImpl implements IFlightsClient{
 	
 	public final String FLIGHT_PATH_V1 = "/v1/flight-information-tail/";
-	private String apiHost;
+	private String apiHost ="http://localhost:8080";
 	
 	private final RestTemplate restTemplate;
 	
