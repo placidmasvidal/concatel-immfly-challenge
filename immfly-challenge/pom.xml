@@ -51,7 +51,7 @@
 					<goals>install</goals>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<!-- <checkModificationExcludes> <checkModificationExclude>pom.xml</checkModificationExclude> 
-						</checkModificationExcludes> -->
+				</checkModificationExcludes> -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -60,7 +60,7 @@
 	<modules>
 		<module>immfly-challenge-domain</module>
 		<module>immfly-challenge-presentation</module>
-		<module>immfly-challenge-distributed-services</module>
+		<module>immfly-challenge-distributed-services</module> <!-- changed to controllers -->
 		<module>immfly-challenge-infrastructure</module>
 		<module>immfly-challenge-crosscutting</module>
 	</modules>

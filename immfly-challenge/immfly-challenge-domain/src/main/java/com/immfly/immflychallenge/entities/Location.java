@@ -2,14 +2,25 @@ package com.immfly.immflychallenge.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("LOCATION")
 @Entity
 @Table(name = "LOCATION")
 public class Location implements Serializable{
 	
 	private static final long serialVersionUID = -1234554321L;
+	
+	@Id
+	@GeneratedValue
+	@Column(name="ID")
+	private String id;
 	
 	private String code;
 	

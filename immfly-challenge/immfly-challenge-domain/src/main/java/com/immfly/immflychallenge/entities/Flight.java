@@ -52,10 +52,10 @@ public class Flight implements Serializable{
 	@Column(name="CANCELLED")
 	private Boolean isCancelled;
 	
-	@Column(name="LOCATION_ID")
+	@Column(name="ORIGIN")
 	private Location origin;
 	
-	@Column(name="LOCATION_ID")
+	@Column(name="DESTINATION")
 	private Location destination;
 
 	public String getIdent() {

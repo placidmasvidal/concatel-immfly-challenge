@@ -7,9 +7,9 @@
 		<artifactId>immfly-challenge</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>immfly-challenge-distributed-services</artifactId>
-	<name>immfly-challenge-distributed-services</name>
-	<description>Distributed services layer, contains the service interfaces</description>
+	<artifactId>immfly-challenge-controllers</artifactId>
+	<name>immfly-challenge-controllers</name>
+	<description>Contains the controllers</description>
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
