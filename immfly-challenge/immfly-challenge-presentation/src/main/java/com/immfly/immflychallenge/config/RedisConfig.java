@@ -1,8 +1,13 @@
 package com.immfly.immflychallenge.config;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.redis.connection.RedisPassword;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -22,15 +27,31 @@ import com.immfly.immflychallenge.queue.RedisMessageSubscriber;
 @PropertySource("classpath:application.properties")
 public class RedisConfig {
 
-    @Bean
-    JedisConnectionFactory jedisConnectionFactory() {
-        return new JedisConnectionFactory();
-    }
+	@Value("${spring.redis.host}")
+	private String host;
 
+	@Value("${spring.redis.password}")
+	private String password;
+	
+	@Value("${spring.redis.port}")
+	private int port;
+	
     @Bean
+    public JedisConnectionFactory getJedisConnectionFactory() {
+    	RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+    	redisStandaloneConfiguration.setHostName(host);
+    	if(!StringUtils.isEmpty(password)) {
+    		redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
+    	}
+    	redisStandaloneConfiguration.setPort(port);
+        return new JedisConnectionFactory(redisStandaloneConfiguration);
+    }
+    
+    @Bean
+//    @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate() {
         final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
-        template.setConnectionFactory(jedisConnectionFactory());
+        template.setConnectionFactory(getJedisConnectionFactory());
         template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
         return template;
     }
@@ -43,7 +64,7 @@ public class RedisConfig {
     @Bean
     RedisMessageListenerContainer redisContainer() {
         final RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(jedisConnectionFactory());
+        container.setConnectionFactory(getJedisConnectionFactory());
         container.addMessageListener(messageListener(), topic());
         return container;
     }

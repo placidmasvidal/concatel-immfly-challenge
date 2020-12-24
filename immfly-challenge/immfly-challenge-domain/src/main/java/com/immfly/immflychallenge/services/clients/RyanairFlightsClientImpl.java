@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,8 @@ import com.immfly.immflychallenge.repositories.FlightRepository;
 public class RyanairFlightsClientImpl implements IFlightsClient{
 	
 	public final String FLIGHT_PATH_V1 = "/v1/flight-information-tail/";
-	private String apiHost ="http://localhost:8080";
+	@Value("${immfly.flightsclient.apiHost}")
+	private String apiHost="http://localhost:8080";
 	
 	private final RestTemplate restTemplate;
 	
