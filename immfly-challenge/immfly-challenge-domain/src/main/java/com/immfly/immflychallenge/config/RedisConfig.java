@@ -17,8 +17,9 @@ import com.immfly.immflychallenge.queue.RedisMessageSubscriber;
 
 
 @Configuration
-@ComponentScan("com.immfly.immflychallenge.domain")
-@EnableRedisRepositories(basePackages = "com.immfly.immflychallenge.domain")
+@ComponentScan("com.immfly.immflychallenge")
+//@EnableRedisRepositories(basePackages = "com.immfly.immflychallenge.domain")
+@EnableRedisRepositories(basePackages = "com.immfly.immflychallenge")
 @PropertySource("classpath:application.properties")
 public class RedisConfig {
 
