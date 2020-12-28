@@ -3,6 +3,7 @@ package com.immfly.immflychallenge.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class FlightController {
 		this.flightService = flighttService;
 	}
 	
-	@GetMapping("/{tailNumber}/{flightId}")
+	@GetMapping(value="/{tailNumber}/{flightId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public GenericResponse<FlightDto> getFlightInformationByTailNumber(
     		@PathVariable("tailNumber") String tailNumber,
     		@PathVariable("flightId") String flightId) throws FlightException{

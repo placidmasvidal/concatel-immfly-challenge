@@ -88,10 +88,10 @@
 			<artifactId>commons-pool2</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
-		<dependency>
-			<groupId>io.lettuce</groupId>
-			<artifactId>lettuce-core</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
 	</dependencies>
 
