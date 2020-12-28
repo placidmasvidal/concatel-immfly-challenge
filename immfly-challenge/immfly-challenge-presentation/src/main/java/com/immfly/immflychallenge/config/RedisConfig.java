@@ -1,24 +1,27 @@
 package com.immfly.immflychallenge.config;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.redis.connection.RedisPassword;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.ReactiveKeyCommands;
+import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
+import org.springframework.data.redis.connection.ReactiveStringCommands;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import com.immfly.immflychallenge.queue.MessagePublisher;
-import com.immfly.immflychallenge.queue.RedisMessagePublisher;
-import com.immfly.immflychallenge.queue.RedisMessageSubscriber;
+import com.immfly.immflychallenge.entities.Flight;
 
 
 @Configuration
@@ -27,55 +30,53 @@ import com.immfly.immflychallenge.queue.RedisMessageSubscriber;
 @PropertySource("classpath:application.properties")
 public class RedisConfig {
 
-	@Value("${spring.redis.host}")
-	private String host;
+    @Autowired
+    RedisConnectionFactory factory;
+	
 
-	@Value("${spring.redis.password}")
-	private String password;
-	
-	@Value("${spring.redis.port}")
-	private int port;
-	
     @Bean
-    public JedisConnectionFactory getJedisConnectionFactory() {
-    	RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-    	redisStandaloneConfiguration.setHostName(host);
-    	if(!StringUtils.isEmpty(password)) {
-    		redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
-    	}
-    	redisStandaloneConfiguration.setPort(port);
-        return new JedisConnectionFactory(redisStandaloneConfiguration);
+    JedisConnectionFactory jedisConnectionFactory() {
+        return new JedisConnectionFactory();
     }
     
-    @Bean
-//    @ConditionalOnMissingBean(name = "redisTemplate")
+/*    @Bean()
+    public ReactiveRedisTemplate<String, Flight> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
+        Jackson2JsonRedisSerializer<Flight> serializer = new Jackson2JsonRedisSerializer<>(Flight.class);
+        RedisSerializationContext.RedisSerializationContextBuilder<String, Flight> builder = RedisSerializationContext.newSerializationContext(new StringRedisSerializer());
+        RedisSerializationContext<String, Flight> context = builder.value(serializer)
+            .build();
+        return new ReactiveRedisTemplate<>(factory, context);
+    }*/
+	
+    @Bean("redisTemplate")
+    @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate() {
-        final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
-        template.setConnectionFactory(getJedisConnectionFactory());
-        template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
-        return template;
+    	final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+    	template.setConnectionFactory(jedisConnectionFactory());
+    	template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+    	return template;
+    }
+    
+ /*   @Bean
+    public ReactiveKeyCommands keyCommands(final ReactiveRedisConnectionFactory reactiveRedisConnectionFactory) {
+        return reactiveRedisConnectionFactory.getReactiveConnection()
+            .keyCommands();
     }
 
     @Bean
-    MessageListenerAdapter messageListener() {
-        return new MessageListenerAdapter(new RedisMessageSubscriber());
+    public ReactiveStringCommands stringCommands(final ReactiveRedisConnectionFactory reactiveRedisConnectionFactory) {
+        return reactiveRedisConnectionFactory.getReactiveConnection()
+            .stringCommands();
     }
-
-    @Bean
-    RedisMessageListenerContainer redisContainer() {
-        final RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(getJedisConnectionFactory());
-        container.addMessageListener(messageListener(), topic());
-        return container;
-    }
-
-    @Bean
-    MessagePublisher redisPublisher() {
-        return new RedisMessagePublisher(redisTemplate(), topic());
-    }
-
-    @Bean
+*/
+    @Bean("channelTopic")
     ChannelTopic topic() {
-        return new ChannelTopic("pubsub:queue");
+        return new ChannelTopic("messageQueue");
+    }
+    
+    @PreDestroy
+    public void cleanRedis() {
+        factory.getConnection()
+            .flushDb();
     }
 }
