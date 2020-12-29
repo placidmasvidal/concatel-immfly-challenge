@@ -9,6 +9,6 @@ import com.immfly.immflychallenge.exceptions.FlightException;
 
 public interface FlightJpaRepository extends JpaRepository<Flight, String>, FlightCustomJpaRepository {
 	
-	Optional<Flight> findByFlightId (String flightId) throws FlightException;
+	Optional<Flight> findById (String Id);
 	
 }
