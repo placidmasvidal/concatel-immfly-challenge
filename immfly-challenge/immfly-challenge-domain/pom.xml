@@ -13,8 +13,6 @@
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-		<cglib.version>3.2.4</cglib.version>
-		<embedded-redis.version>0.6</embedded-redis.version>
 	</properties>
 
 	<dependencies>
@@ -92,17 +90,13 @@
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
 
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<version>${cglib.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.kstyrc</groupId>
-			<artifactId>embedded-redis</artifactId>
-			<version>${embedded-redis.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -118,9 +112,16 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
-				<configuration> <verbose>true</verbose> <fork>false</fork> <forkCount>0</forkCount> 
-				<argLine>-Xmx1024m</argLine> </configuration> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<verbose>true</verbose>
+					<fork>false</fork>
+					<forkCount>0</forkCount>
+					<argLine>-Xmx1024m</argLine>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
