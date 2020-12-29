@@ -37,4 +37,9 @@ public class FlightController {
     	return new GenericResponseBuilder<FlightDto>(flightService.getFlightByTailNumber(tailNumber, flightId)).build();
     }
 	
+	@GetMapping(value="/{flightId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public GenericResponse<FlightDto> getFlightById(
+    		@PathVariable("flightId") String flightId) throws FlightException{
+    	return new GenericResponseBuilder<FlightDto>(flightService.getFlightById(flightId)).build();
+    }
 }

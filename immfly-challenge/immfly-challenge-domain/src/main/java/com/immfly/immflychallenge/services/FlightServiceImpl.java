@@ -32,6 +32,14 @@ public class FlightServiceImpl implements IFlightService {
 		this.flightMapper = flightMapper;
 	}
 
+	@Override
+	public FlightDto getFlightById (String id){
+		
+		Optional<Flight> entity = flightJpaRepository.findById(id);
+		
+		return flightMapper.mapToDto(entity.get());
+		
+	}
 
 	//TODO
 	@Override

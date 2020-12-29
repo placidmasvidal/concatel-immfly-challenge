@@ -7,4 +7,5 @@ public interface IFlightService {
 
 	FlightDto getFlightByTailNumber(String tailNumber, String flightId)	throws FlightException;
 	
+	FlightDto getFlightById (String id);
 }
