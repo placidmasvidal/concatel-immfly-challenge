@@ -18,7 +18,7 @@ import com.immfly.immflychallenge.repositories.FlightRepository;
 //@ConfigurationProperties(prefix = "immfly.flightsclient", ignoreUnknownFields = false)
 public class RyanairFlightsClientImpl implements IFlightsClient{
 	
-	public final String FLIGHT_PATH_V1 = "/v1/flight-information-tail/";
+	public final String FLIGHT_PATH_V1 = "http://localhost:9090/v1/flight-information-tail/";
 //	@Value("${immfly.flightsclient.apiHost}")
 	private String apiHost="http://localhost:9090";
 	
