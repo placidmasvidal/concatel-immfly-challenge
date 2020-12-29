@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
@@ -13,6 +14,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public class BaseRepositoryImpl<T, I extends Serializable> extends SimpleJpaRepository<T, I> implements BaseRepository<T, I> {
 
+	@PersistenceContext
     private final EntityManager entityManager;
 
     public BaseRepositoryImpl(JpaEntityInformation entityInformation, EntityManager entityManager) {

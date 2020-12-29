@@ -1,6 +1,7 @@
 package com.immfly.immflychallenge.repositories;
 
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.stereotype.Repository;
 
 import com.immfly.immflychallenge.entities.Flight;
 
