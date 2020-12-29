@@ -42,7 +42,7 @@ public class FlightServiceImpl implements IFlightService {
 		List<FlightDto> flightsDtos = flightMapper.mapToDtoList(flightsEntities);
 		
 		Optional<FlightDto> flight = flightsDtos.stream()
-				.filter(x -> x.getIdent().equals(flightId))
+				.filter(x -> x.getId().equals(flightId))
 				.findFirst();
 		
 		if(!flight.isPresent()) {
