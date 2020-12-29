@@ -33,12 +33,12 @@ public class FlightDto {
 	
 	private LocationDto destination;
 
-	public String getIdent() {
+	public String getId() {
 		return id;
 	}
 
-	public void setIdent(String ident) {
-		this.id = ident;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getFaFlightID() {
@@ -136,7 +136,7 @@ public class FlightDto {
 	public void setDestination(LocationDto destination) {
 		this.destination = destination;
 	}
-	
-	
     
+	
+	
 }

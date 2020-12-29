@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class LocationDto {
 	
 	private String id;
-
-	private String code;
 	
 	private String city;
 	
@@ -17,22 +15,12 @@ public class LocationDto {
 	
 	private String airportName;
 
-	
-	
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
 	}
 
 	public String getCity() {
@@ -58,6 +46,6 @@ public class LocationDto {
 	public void setAirportName(String airportName) {
 		this.airportName = airportName;
 	}
-	
-	
+
+
 }
