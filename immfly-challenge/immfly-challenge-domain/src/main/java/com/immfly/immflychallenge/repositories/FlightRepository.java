@@ -13,5 +13,5 @@ import com.immfly.immflychallenge.generic.CustomRepository;
 //@NoRepositoryBean
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, String>, CustomRepository{
-		Optional<Flight> findByFlightId (String flightId) throws FlightException;
+		Optional<Flight> findById (String flightId);
 }
