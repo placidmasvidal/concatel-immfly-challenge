@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LocationDto {
 
-	private String code;
+	private String id;
 	
 	private String city;
 	
@@ -16,11 +16,11 @@ public class LocationDto {
 	private String airportName;
 
 	public String getCode() {
-		return code;
+		return id;
 	}
 
 	public void setCode(String code) {
-		this.code = code;
+		this.id = code;
 	}
 
 	public String getCity() {

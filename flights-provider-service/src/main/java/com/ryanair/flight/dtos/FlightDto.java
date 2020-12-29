@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FlightDto {
 	
-	private String ident;
+	private String id;
 
 	private String faFlightID;
 	
@@ -33,12 +33,12 @@ public class FlightDto {
 	
 	private LocationDto destination;
 
-	public String getIdent() {
-		return ident;
+	public String getId() {
+		return id;
 	}
 
-	public void setIdent(String ident) {
-		this.ident = ident;
+	public void setIdent(String id) {
+		this.id = id;
 	}
 
 	public String getFaFlightID() {
