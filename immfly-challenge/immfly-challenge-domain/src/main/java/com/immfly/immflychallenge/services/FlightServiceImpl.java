@@ -11,7 +11,7 @@ import com.immfly.immflychallenge.dtos.FlightDto;
 import com.immfly.immflychallenge.entities.Flight;
 import com.immfly.immflychallenge.exceptions.FlightException;
 import com.immfly.immflychallenge.mappers.IFlightMapper;
-import com.immfly.immflychallenge.repositories.FlightRepository;
+import com.immfly.immflychallenge.repositories.FlightJpaRepository;
 import com.immfly.immflychallenge.services.clients.IFlightsClient;
 
 @Service
@@ -19,16 +19,16 @@ public class FlightServiceImpl implements IFlightService {
 
 	private IFlightsClient flightsClient;
 	
-	private FlightRepository flightRepository;
+	private FlightJpaRepository flightJpaRepository;
 	
 	private IFlightMapper flightMapper;
 	
 	@Autowired
 	public FlightServiceImpl(IFlightsClient flightsClient,
-			FlightRepository flightRepository,
+			FlightJpaRepository flightJpaRepository,
 			IFlightMapper flightMapper) {
 		this.flightsClient = flightsClient;
-		this.flightRepository = flightRepository;
+		this.flightJpaRepository = flightJpaRepository;
 		this.flightMapper = flightMapper;
 	}
 
@@ -37,7 +37,7 @@ public class FlightServiceImpl implements IFlightService {
 	@Override
 	public FlightDto getFlightByTailNumber(String tailNumber, String flightId) throws FlightException{
 		
-		List<Flight> flightsEntities = flightRepository.findAll();
+		List<Flight> flightsEntities = flightJpaRepository.findAll();
 		
 		List<FlightDto> flightsDtos = flightMapper.mapToDtoList(flightsEntities);
 		

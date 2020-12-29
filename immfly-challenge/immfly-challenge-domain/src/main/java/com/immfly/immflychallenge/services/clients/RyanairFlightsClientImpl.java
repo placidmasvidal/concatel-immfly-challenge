@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import com.immfly.immflychallenge.dtos.FlightDto;
 import com.immfly.immflychallenge.entities.Flight;
 import com.immfly.immflychallenge.mappers.IFlightMapper;
-import com.immfly.immflychallenge.repositories.FlightRepository;
+import com.immfly.immflychallenge.repositories.FlightJpaRepository;
 
 @Service
 //@ConfigurationProperties(prefix = "immfly.flightsclient", ignoreUnknownFields = false)
@@ -24,16 +24,16 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
 	
 	private final RestTemplate restTemplate;
 	
-	private FlightRepository flightRepository;
+	private FlightJpaRepository flightJpaRepository;
 	
 	private IFlightMapper flightMapper;
 	
 	@Autowired	
 	public RyanairFlightsClientImpl(RestTemplateBuilder restTemplateBuilder,
-			FlightRepository flightRepository,
+			FlightJpaRepository flightJpaRepository,
 			IFlightMapper flightMapper) {
         this.restTemplate = restTemplateBuilder.build();
-        this.flightRepository = flightRepository;
+        this.flightJpaRepository = flightJpaRepository;
         this.flightMapper = flightMapper;
     }
     
@@ -42,7 +42,7 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
     	ResponseEntity<FlightDto[]> response =
     			restTemplate.getForEntity(apiHost + FLIGHT_PATH_V1, FlightDto[].class);
     	List<Flight> flights = flightMapper.mapFromDtoList(Arrays.asList(response.getBody()));
-    	flights.forEach(flight -> flightRepository.save(flight));
+    	flights.forEach(flight -> flightJpaRepository.save(flight));
 //        return Arrays.asList(response.getBody());
     }
     
