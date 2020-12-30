@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ryanair.flight.dtos.FlightDto;
+import com.ryanair.flight.dtos.RyanairFlightDto;
 
 
 @Service
@@ -15,9 +15,9 @@ public class FlightProviderServiceImpl implements IFlightProviderService{
  
  
 	@Override
-	public List<FlightDto> retrieveFlights() throws IOException {
+	public List<RyanairFlightDto> retrieveFlights() throws IOException {
     ObjectMapper mapper = new ObjectMapper();
-	TypeReference<List<FlightDto>> typeReference = new TypeReference<List<FlightDto>>(){};
+	TypeReference<List<RyanairFlightDto>> typeReference = new TypeReference<List<RyanairFlightDto>>(){};
 	InputStream inputStream = TypeReference.class.getResourceAsStream("/flights.json");
 	
 	return mapper.readValue(inputStream,typeReference);

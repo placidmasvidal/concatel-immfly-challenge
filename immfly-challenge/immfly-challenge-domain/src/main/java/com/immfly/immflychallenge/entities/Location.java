@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("LOCATION")
 @Entity
-@Table(name = "LOCATION")
+@Table(name = "LOCATION", catalog = "immflydb")
 public class Location implements Serializable {
 
 	private static final long serialVersionUID = -1234554321L;
@@ -20,7 +20,7 @@ public class Location implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
-	private String id;
+	private String id;	//TODO change to UUID
 
 	@Column(name = "CITY")
 	private String city;

@@ -45,6 +45,8 @@ public class FlightServiceImpl implements IFlightService {
 	@Override
 	public FlightDto getFlightByTailNumber(String tailNumber, String flightId) throws FlightException{
 		
+		checkForFlightsProcess();
+		
 		List<Flight> flightsEntities = flightJpaRepository.findAll();
 		
 		List<FlightDto> flightsDtos = flightMapper.mapToDtoList(flightsEntities);

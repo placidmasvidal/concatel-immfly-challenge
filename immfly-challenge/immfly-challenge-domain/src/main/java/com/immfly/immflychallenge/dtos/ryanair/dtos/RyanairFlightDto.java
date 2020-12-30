@@ -1,29 +1,19 @@
-package com.immfly.immflychallenge.dtos;
-
-import java.io.Serializable;
+package com.immfly.immflychallenge.dtos.ryanair.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FlightDto implements Serializable{
+public class RyanairFlightDto {
 	
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1720714210697512990L;
-
-	private String id;
+	private String ident;
 
 	private String faFlightID;
 	
 	private String airline;
 	
-	private String airlineIata;
+	private String airline_iata;
 	
 	private String flightNumber;
 	
@@ -33,22 +23,22 @@ public class FlightDto implements Serializable{
 	
 	private String codeshares;
 	
-	private Boolean isBlocked;
+	private boolean blocked;
 	
-	private Boolean isDiverted;
+	private boolean diverted;
 	
-	private Boolean isCancelled;
+	private boolean cancelled;
 	
-	private LocationDto origin;
+	private RyanairLocationDto origin;
 	
-	private LocationDto destination;
+	private RyanairLocationDto destination;
 
-	public String getId() {
-		return id;
+	public String getIdent() {
+		return ident;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIdent(String ident) {
+		this.ident = ident;
 	}
 
 	public String getFaFlightID() {
@@ -68,11 +58,11 @@ public class FlightDto implements Serializable{
 	}
 
 	public String getAirline_iata() {
-		return airlineIata;
+		return airline_iata;
 	}
 
 	public void setAirline_iata(String airline_iata) {
-		this.airlineIata = airline_iata;
+		this.airline_iata = airline_iata;
 	}
 
 	public String getFlightNumber() {
@@ -107,46 +97,47 @@ public class FlightDto implements Serializable{
 		this.codeshares = codeshares;
 	}
 
-	public Boolean getIsBlocked() {
-		return isBlocked;
+	public boolean isBlocked() {
+		return blocked;
 	}
 
-	public void setIsBlocked(Boolean isBlocked) {
-		this.isBlocked = isBlocked;
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 
-	public Boolean getIsDiverted() {
-		return isDiverted;
+	public boolean isDiverted() {
+		return diverted;
 	}
 
-	public void setIsDiverted(Boolean isDiverted) {
-		this.isDiverted = isDiverted;
+	public void setDiverted(boolean diverted) {
+		this.diverted = diverted;
 	}
 
-	public Boolean getIsCancelled() {
-		return isCancelled;
+	public boolean isCancelled() {
+		return cancelled;
 	}
 
-	public void setIsCancelled(Boolean isCancelled) {
-		this.isCancelled = isCancelled;
+	public void setCancelled(boolean cancelled) {
+		this.cancelled = cancelled;
 	}
 
-	public LocationDto getOrigin() {
+	public RyanairLocationDto getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(LocationDto origin) {
+	public void setOrigin(RyanairLocationDto origin) {
 		this.origin = origin;
 	}
 
-	public LocationDto getDestination() {
+	public RyanairLocationDto getDestination() {
 		return destination;
 	}
 
-	public void setDestination(LocationDto destination) {
+	public void setDestination(RyanairLocationDto destination) {
 		this.destination = destination;
 	}
+
+
+	
     
-	
-	
 }

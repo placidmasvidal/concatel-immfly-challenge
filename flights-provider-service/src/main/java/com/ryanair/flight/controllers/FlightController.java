@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ryanair.flight.dtos.FlightDto;
+import com.ryanair.flight.dtos.RyanairFlightDto;
 import com.ryanair.flight.dtos.GenericResponse;
 import com.ryanair.flight.dtos.GenericResponseBuilder;
 import com.ryanair.flight.services.IFlightProviderService;
@@ -23,8 +23,8 @@ public class FlightController {
 	}
 	
     @GetMapping("/v1/flight-information-tail/")
-    public GenericResponse<List<FlightDto>> retrieveFlights() throws IOException {
-    	return new GenericResponseBuilder<List<FlightDto>>(flightProviderService.retrieveFlights()).build();
+    public GenericResponse<List<RyanairFlightDto>> retrieveFlights() throws IOException {
+    	return new GenericResponseBuilder<List<RyanairFlightDto>>(flightProviderService.retrieveFlights()).build();
     }
 
 

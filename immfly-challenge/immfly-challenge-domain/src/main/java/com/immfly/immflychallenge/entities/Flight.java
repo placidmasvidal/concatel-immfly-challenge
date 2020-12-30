@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("FLIGHT")
 @Entity
-@Table(name = "FLIGHT")
+@Table(name = "FLIGHT", catalog = "immflydb")
 public class Flight implements Serializable{
 	
 	private static final long serialVersionUID = -123456789L;
@@ -29,7 +29,7 @@ public class Flight implements Serializable{
 	private String airline;
 	
 	@Column(name="AIRLINE_IATA")
-	private String airline_iata;
+	private String airlineIata;
 	
 	@Column(name="FLIGHT_NUMBER")
 	private String flightNumber;
@@ -52,10 +52,10 @@ public class Flight implements Serializable{
 	@Column(name="CANCELLED")
 	private Boolean isCancelled;
 	
-	@Column(name="ORIGIN")
+	@Column(name="ORIGIN_ID")
 	private Location origin;
 	
-	@Column(name="DESTINATION")
+	@Column(name="DESTINATION_ID")
 	private Location destination;
 
 	public String getId() {
@@ -81,13 +81,13 @@ public class Flight implements Serializable{
 	public void setAirline(String airline) {
 		this.airline = airline;
 	}
-
-	public String getAirline_iata() {
-		return airline_iata;
+	
+	public String getAirlineIata() {
+		return airlineIata;
 	}
 
-	public void setAirline_iata(String airline_iata) {
-		this.airline_iata = airline_iata;
+	public void setAirlineIata(String airlineIata) {
+		this.airlineIata = airlineIata;
 	}
 
 	public String getFlightNumber() {

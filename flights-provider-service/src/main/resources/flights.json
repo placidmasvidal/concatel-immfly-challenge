@@ -35,7 +35,7 @@
    "codeshares": "IBE123",
    "blocked": false,
    "diverted": false,
-   "cancelled": false,
+   "cancelled": true,
    "origin": {
       "code": "GCX0",
       "city": "Tenerife",
