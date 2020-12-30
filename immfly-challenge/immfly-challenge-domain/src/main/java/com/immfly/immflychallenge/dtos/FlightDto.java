@@ -33,11 +33,11 @@ public class FlightDto implements Serializable{
 	
 	private String codeshares;
 	
-	private Boolean isBlocked;
+	private boolean isBlocked;
 	
-	private Boolean isDiverted;
+	private boolean isDiverted;
 	
-	private Boolean isCancelled;
+	private boolean isCancelled;
 	
 	private LocationDto origin;
 	
@@ -107,27 +107,27 @@ public class FlightDto implements Serializable{
 		this.codeshares = codeshares;
 	}
 
-	public Boolean getIsBlocked() {
+	public boolean getIsBlocked() {
 		return isBlocked;
 	}
 
-	public void setIsBlocked(Boolean isBlocked) {
+	public void setIsBlocked(boolean isBlocked) {
 		this.isBlocked = isBlocked;
 	}
 
-	public Boolean getIsDiverted() {
+	public boolean getIsDiverted() {
 		return isDiverted;
 	}
 
-	public void setIsDiverted(Boolean isDiverted) {
+	public void setIsDiverted(boolean isDiverted) {
 		this.isDiverted = isDiverted;
 	}
 
-	public Boolean getIsCancelled() {
+	public boolean getIsCancelled() {
 		return isCancelled;
 	}
 
-	public void setIsCancelled(Boolean isCancelled) {
+	public void setIsCancelled(boolean isCancelled) {
 		this.isCancelled = isCancelled;
 	}
 

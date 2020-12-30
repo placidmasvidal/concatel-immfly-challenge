@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -38,13 +40,12 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
     }
     
 	@Override
-    public /*List<FlightDto>*/ void getFlights(){
-    	ResponseEntity<RyanairFlightDto[]> response =
-    			restTemplate.getForEntity(apiHost + FLIGHT_PATH_V1, RyanairFlightDto[].class);
-    	List<FlightDto> flightsDtos = flightMapper.mapFromExternalDtoListToDtoList(Arrays.asList(response.getBody()));
+    public void getFlights(){
+    	ResponseEntity<List<RyanairFlightDto>> flightResponse =
+    			restTemplate.exchange(apiHost + FLIGHT_PATH_V1, HttpMethod.GET, null, new ParameterizedTypeReference<List<RyanairFlightDto>>() {});
+    	List<FlightDto> flightsDtos = flightMapper.mapFromExternalDtoListToDtoList(flightResponse.getBody());
     	List<Flight> flights = flightMapper.mapFromDtoList(flightsDtos);
     	flights.forEach(flight -> flightJpaRepository.save(flight));
-//        return Arrays.asList(response.getBody());
     }
     
 	public String getApiHost() {

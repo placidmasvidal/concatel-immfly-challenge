@@ -44,13 +44,13 @@ public class Flight implements Serializable{
 	private String codeshares;
 	
 	@Column(name="BLOCKED")
-	private Boolean isBlocked;
+	private boolean isBlocked;
 	
 	@Column(name="DIVERTED")
-	private Boolean isDiverted;
+	private boolean isDiverted;
 	
 	@Column(name="CANCELLED")
-	private Boolean isCancelled;
+	private boolean isCancelled;
 	
 	@Column(name="ORIGIN_ID")
 	private Location origin;
@@ -122,27 +122,27 @@ public class Flight implements Serializable{
 		this.codeshares = codeshares;
 	}
 
-	public Boolean getIsBlocked() {
+	public boolean getIsBlocked() {
 		return isBlocked;
 	}
 
-	public void setIsBlocked(Boolean isBlocked) {
+	public void setIsBlocked(boolean isBlocked) {
 		this.isBlocked = isBlocked;
 	}
 
-	public Boolean getIsDiverted() {
+	public boolean getIsDiverted() {
 		return isDiverted;
 	}
 
-	public void setIsDiverted(Boolean isDiverted) {
+	public void setIsDiverted(boolean isDiverted) {
 		this.isDiverted = isDiverted;
 	}
 
-	public Boolean getIsCancelled() {
+	public boolean getIsCancelled() {
 		return isCancelled;
 	}
 
-	public void setIsCancelled(Boolean isCancelled) {
+	public void setIsCancelled(boolean isCancelled) {
 		this.isCancelled = isCancelled;
 	}
 
