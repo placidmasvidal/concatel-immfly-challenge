@@ -67,12 +67,12 @@ public class FlightDto implements Serializable{
 		this.airline = airline;
 	}
 
-	public String getAirline_iata() {
+	public String getAirlineIata() {
 		return airlineIata;
 	}
 
-	public void setAirline_iata(String airline_iata) {
-		this.airlineIata = airline_iata;
+	public void setAirlineIata(String airlineIata) {
+		this.airlineIata = airlineIata;
 	}
 
 	public String getFlightNumber() {
