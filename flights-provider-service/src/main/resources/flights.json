@@ -37,16 +37,16 @@
    "diverted": false,
    "cancelled": true,
    "origin": {
-      "code": "GCX0",
-      "city": "Tenerife",
-      "alternate_ident": "TFN",
-      "airport_name": "Tenerife North (Los Rodeos)"
+      "code": "GBCN",
+      "city": "Barcelona",
+      "alternate_ident": "BCN",
+      "airport_name": "Aeroport del Prat"
    },
    "destination": {
-      "code": "GCGM",
-      "city": "La Gomera",
-      "alternate_ident": "GMZ",
-      "airport_name": "La Gomera"
+      "code": "GCDM",
+      "city": "Madrid",
+      "alternate_ident": "CDM",
+      "airport_name": "Barajas"
    }
 },
 {

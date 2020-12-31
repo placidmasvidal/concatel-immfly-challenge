@@ -2,8 +2,10 @@ package com.immfly.immflychallenge.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -56,12 +58,12 @@ public class Flight implements Serializable{
 	@Column(name="CANCELLED")
 	private boolean isCancelled;
 	
-	@ManyToOne()
-	@JoinColumn(name="ID", insertable=false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="ORIGIN_ID")
 	private Location origin;
 	
-	@ManyToOne()
-	@JoinColumn(name="ID", insertable=false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="DESTINATION_ID")
 	private Location destination;
 
 	public String getId() {
