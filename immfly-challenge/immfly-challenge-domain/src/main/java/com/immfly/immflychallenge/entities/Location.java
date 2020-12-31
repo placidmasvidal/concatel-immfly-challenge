@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash("LOCATION")
+//@RedisHash("LOCATION")
 @Entity
 @Table(name = "LOCATION", catalog = "immflydb")
 public class Location implements Serializable {
