@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.redis.core.RedisHash;
@@ -15,10 +16,13 @@ import org.springframework.data.redis.core.RedisHash;
 @Table(name = "FLIGHT", catalog = "immflydb")
 public class Flight implements Serializable{
 	
-	private static final long serialVersionUID = -123456789L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2630177760497502841L;
+
 	@Id
-	@GeneratedValue
 	@Column(name="ID")
 	private String id;
 
@@ -52,10 +56,12 @@ public class Flight implements Serializable{
 	@Column(name="CANCELLED")
 	private boolean isCancelled;
 	
-	@Column(name="ORIGIN_ID")
+	@ManyToOne()
+	@JoinColumn(name="ID", insertable=false, updatable = false)
 	private Location origin;
 	
-	@Column(name="DESTINATION_ID")
+	@ManyToOne()
+	@JoinColumn(name="ID", insertable=false, updatable = false)
 	private Location destination;
 
 	public String getId() {

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("LOCATION")
@@ -15,13 +16,16 @@ import org.springframework.data.redis.core.RedisHash;
 @Table(name = "LOCATION", catalog = "immflydb")
 public class Location implements Serializable {
 
-	private static final long serialVersionUID = -1234554321L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7750174970427220740L;
 
 	@Id
-	@GeneratedValue
 	@Column(name = "ID")
-	private String id;	//TODO change to UUID
-
+	private String id;
+	
 	@Column(name = "CITY")
 	private String city;
 

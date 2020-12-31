@@ -45,7 +45,7 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
     			restTemplate.exchange(apiHost + FLIGHT_PATH_V1, HttpMethod.GET, null, new ParameterizedTypeReference<List<RyanairFlightDto>>() {});
     	List<FlightDto> flightsDtos = flightMapper.mapFromExternalDtoListToDtoList(flightResponse.getBody());
     	List<Flight> flights = flightMapper.mapFromDtoList(flightsDtos);
-    	flights.forEach(flight -> flightJpaRepository.save(flight));
+    	flights.forEach(flight -> flightJpaRepository.saveAndFlush(flight));
     }
     
 	public String getApiHost() {
