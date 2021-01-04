@@ -24,7 +24,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.immfly</groupId>
-			<artifactId>immfly-challenge-controllers</artifactId>
+			<artifactId>immfly-challenge-distributed-services</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
