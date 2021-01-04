@@ -33,20 +33,21 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 	@Override
-	public FlightDto getFlightById (String id){
+	public FlightDto getFlightById (String id) throws FlightException{
 		
 		Optional<Flight> entity = flightJpaRepository.findById(id);
+		
+		if(!entity.isPresent()) {
+			throw new FlightException("Couldn't find flight with flight id = " + id);
+		}
 		
 		return flightMapper.mapToDto(entity.get());
 		
 	}
 
-	//TODO
 	@Override
 	public FlightDto getFlightByTailNumber(String tailNumber, String flightId) throws FlightException{
-		
-		checkForFlightsProcess();
-		
+				
 		List<Flight> flightsEntities = flightJpaRepository.findAll();
 		
 		List<FlightDto> flightsDtos = flightMapper.mapToDtoList(flightsEntities);
@@ -61,20 +62,12 @@ public class FlightServiceImpl implements IFlightService {
 		
 		return flight.get();
 		
-/*		Optional<FlightDto> flight = checkForFlightsProcess().stream()
-							.filter(x -> x.getIdent().equals(flightId))
-							.findFirst();
-		if(!flight.isPresent()) {
-			throw new FlightException("Couldn't find flight with flight id = " + flightId);
-		}
-		
-		return flight.get();	*/
 	}
 
 
 	@Scheduled(cron = "0 * * * * ?")
-	private /*List<FlightDto>*/ void checkForFlightsProcess() {
-		/*return*/ flightsClient.getFlights();
+	private void checkForFlightsProcess() {
+		flightsClient.getFlights();
 	}
 	
 }

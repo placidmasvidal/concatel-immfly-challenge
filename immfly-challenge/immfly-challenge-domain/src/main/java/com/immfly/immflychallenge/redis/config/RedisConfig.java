@@ -28,7 +28,7 @@ public class RedisConfig {
 
         RedisTemplate<String, List<Flight>> redisTemplate = new RedisTemplate<>();
 
-         redisTemplate.setConnectionFactory(connectionFactory);
+        redisTemplate.setConnectionFactory(connectionFactory);
 
         redisTemplate.afterPropertiesSet();
 

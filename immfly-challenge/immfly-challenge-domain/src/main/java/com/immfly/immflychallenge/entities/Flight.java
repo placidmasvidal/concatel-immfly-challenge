@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.redis.core.RedisHash;
 
-//@RedisHash("FLIGHT")
+@RedisHash("FLIGHT")
 @Entity
 @Table(name = "FLIGHT", catalog = "immflydb")
 public class Flight implements Serializable{
