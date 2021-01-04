@@ -1,6 +1,4 @@
 package com.immfly.immflychallenge.redis.config;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +22,9 @@ public class RedisConfig {
 	
     @Bean
 	@Autowired
-    public RedisTemplate<String, List<Flight>> redisFlightTemplate(RedisConnectionFactory connectionFactory) {
+    public RedisTemplate<String, Flight> redisFlightTemplate(RedisConnectionFactory connectionFactory) {
 
-        RedisTemplate<String, List<Flight>> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<String, Flight> redisTemplate = new RedisTemplate<>();
 
         redisTemplate.setConnectionFactory(connectionFactory);
 

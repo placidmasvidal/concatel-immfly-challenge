@@ -1,5 +1,4 @@
 package com.immfly.immflychallenge.services.clients;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
 	private final RestTemplate restTemplate;
 	
 	private FlightJpaRepository flightJpaRepository;
-	
+		
 	private IFlightMapper flightMapper;
 	
 	@Autowired	
@@ -45,7 +44,7 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
     			restTemplate.exchange(apiHost + FLIGHT_PATH_V1, HttpMethod.GET, null, new ParameterizedTypeReference<List<RyanairFlightDto>>() {});
     	List<FlightDto> flightsDtos = flightMapper.mapFromExternalDtoListToDtoList(flightResponse.getBody());
     	List<Flight> flights = flightMapper.mapFromDtoList(flightsDtos);
-    	flights.forEach(flight -> flightJpaRepository.saveAndFlush(flight));
+    	flights.forEach(flight -> flightJpaRepository.save(flight));
     }
     
 	public String getApiHost() {
