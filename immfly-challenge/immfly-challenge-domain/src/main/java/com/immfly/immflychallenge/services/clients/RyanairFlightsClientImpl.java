@@ -54,7 +54,5 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
 	public void setApiHost(String apiHost) {
 		this.apiHost = apiHost;
 	}
-	
-	
 
 }
