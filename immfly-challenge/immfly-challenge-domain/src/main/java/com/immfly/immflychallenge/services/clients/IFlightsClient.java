@@ -4,4 +4,6 @@ public interface IFlightsClient {
 
 	void getFlights();
 	
+	void getFlightsFromQueue(String ident);
+	
 }

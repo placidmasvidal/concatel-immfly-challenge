@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.immfly.immflychallenge.amqp.AmqpConsumer;
 import com.immfly.immflychallenge.dtos.FlightDto;
 import com.immfly.immflychallenge.entities.Flight;
 import com.immfly.immflychallenge.exceptions.FlightException;
@@ -24,13 +25,17 @@ public class FlightServiceImpl implements IFlightService {
 	
 	private IFlightMapper flightMapper;
 	
+//	private AmqpConsumer flightsConsumer;
+	
 	@Autowired
 	public FlightServiceImpl(IFlightsClient flightsClient,
 			FlightJpaRepository flightJpaRepository,
-			IFlightMapper flightMapper) {
+			IFlightMapper flightMapper,
+			AmqpConsumer flightsConsumer) {
 		this.flightsClient = flightsClient;
 		this.flightJpaRepository = flightJpaRepository;
 		this.flightMapper = flightMapper;
+//		this.flightsConsumer = flightsConsumer;
 	}
 
 	@Override

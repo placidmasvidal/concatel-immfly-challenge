@@ -8,14 +8,15 @@ import org.springframework.stereotype.Component;
 import com.immfly.immflychallenge.services.clients.IFlightsClient;
 
 @Component
-public class FlightsConsumer {
+public class FlightsConsumer implements AmqpConsumer{
 
 	@Autowired
 	private IFlightsClient flightsClient;
 	
+	@Override
 	@RabbitListener(queues = {"${queue.flights.name}"})
     public void receive(@Payload String ident) {
-//		flightsClient.getFlights();
+		flightsClient.getFlightsFromQueue(ident);
 	}
 	
 }
