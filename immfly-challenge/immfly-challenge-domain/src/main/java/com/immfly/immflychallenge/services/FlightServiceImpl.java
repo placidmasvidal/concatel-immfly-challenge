@@ -30,8 +30,8 @@ public class FlightServiceImpl implements IFlightService {
 	@Autowired
 	public FlightServiceImpl(IFlightsClient flightsClient,
 			FlightJpaRepository flightJpaRepository,
-			IFlightMapper flightMapper,
-			AmqpConsumer flightsConsumer) {
+			IFlightMapper flightMapper/*,
+			AmqpConsumer flightsConsumer*/) {
 		this.flightsClient = flightsClient;
 		this.flightJpaRepository = flightJpaRepository;
 		this.flightMapper = flightMapper;

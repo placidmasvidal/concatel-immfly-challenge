@@ -15,16 +15,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableRedisRepositories(basePackages = "com.immfly.immflychallenge")
 public class ImmflyChallengeApplication {
 
-	@Value("${queue.flights.name}")
+/*	@Value("${queue.flights.name}")
     private String flightsQueue;
-	
+*/	
 	public static void main(String[] args) {
 		SpringApplication.run(ImmflyChallengeApplication.class, args);
 	}
 	
-	@Bean
+/*	@Bean
     public Queue queue() {
         return new Queue(flightsQueue, true);
     }
-
+*/
 }

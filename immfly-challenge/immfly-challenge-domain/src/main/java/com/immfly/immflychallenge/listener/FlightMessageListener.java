@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 import com.immfly.immflychallenge.entities.Flight;
 import com.immfly.immflychallenge.repositories.FlightJpaRepository;
 
-import jdk.internal.org.jline.utils.Log;
+//import jdk.internal.org.jline.utils.Log;
 
-@Component
+//@Component
 public class FlightMessageListener {
 
-	private FlightJpaRepository flightJpaRepository;
+/*	private FlightJpaRepository flightJpaRepository;
 	
 	Logger logger = LogManager.getLogger(FlightMessageListener.class);
 	
@@ -30,5 +30,5 @@ public class FlightMessageListener {
 		
 		Log.info("Sent all...");
 	}
-	
+*/	
 }
