@@ -8,7 +8,5 @@ import com.ryanair.flight.dtos.RyanairFlightDto;
 public interface IFlightProviderService {
 
 	List<RyanairFlightDto> retrieveFlights() throws IOException;
-	
-	void sendFlightMessage (String id);
 
 }

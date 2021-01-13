@@ -55,12 +55,4 @@ public class RyanairFlightsClientImpl implements IFlightsClient{
 		this.apiHost = apiHost;
 	}
 
-	@Override
-	public void getFlightsFromQueue(String ident) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
 }

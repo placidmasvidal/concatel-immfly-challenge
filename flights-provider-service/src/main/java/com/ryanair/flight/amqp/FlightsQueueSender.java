@@ -1,21 +1,30 @@
 package com.ryanair.flight.amqp;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import com.ryanair.flight.dtos.RyanairFlightDto;
 
 @Component
 public class FlightsQueueSender {
-
+/*
 	@Autowired
-	private RabbitTemplate rabbitTemplate;
+	private AmqpTemplate rabbitTemplate;
 
-	@Autowired
-	private Queue queue;
-
-	public void send(String id) {
-		rabbitTemplate.convertAndSend(this.queue.getName(), id);
-	}
+	@Value("${jsa.rabbitmq.exchange}")
+	private String exchange;
 	
+	@Value("${jsa.rabbitmq.routingkey}")
+	private String routingKey;
+
+	@Scheduled(fixedRate = 2000)
+	public void produce(RyanairFlightDto flight){
+		rabbitTemplate.convertAndSend(exchange, routingKey, flight);
+		System.out.println("Send msg = " + flight);
+	}
+	*/
+
 }

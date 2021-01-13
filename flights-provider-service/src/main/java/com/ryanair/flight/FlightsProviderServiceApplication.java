@@ -14,16 +14,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class FlightsProviderServiceApplication {
 
 
-	@Value("${queue.flights.name}")
+/*	@Value("${queue.flights.name}")
     private String flightsQueue;
-	
+*/	
 	public static void main(String[] args) {
 		SpringApplication.run(FlightsProviderServiceApplication.class, args);
 	}
 	
-	@Bean
+/*	@Bean
     public Queue queue() {
         return new Queue(flightsQueue, true);
     }
-
+*/
 }
