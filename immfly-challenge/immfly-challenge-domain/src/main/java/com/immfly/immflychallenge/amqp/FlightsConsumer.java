@@ -28,8 +28,7 @@ public class FlightsConsumer implements AmqpConsumer{
 	private IFlightMapper flightMapper;
 	
 	@Override
-//	@Scheduled(fixedRate = 2000)
-	@RabbitListener(queues = {"${jsa.rabbitmq.queue}"})
+	@RabbitListener(queues = "jsa.flights.queue")
     public void receive(@Payload List<FlightDto> flightsDtos, @Headers MessageHeaders headers, Message message) {
     	List<Flight> flights = flightMapper.mapFromDtoList(flightsDtos);
     	flights.forEach(flight -> flightJpaRepository.save(flight));
