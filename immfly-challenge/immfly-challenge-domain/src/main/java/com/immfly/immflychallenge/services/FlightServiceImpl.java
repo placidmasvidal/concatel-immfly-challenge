@@ -3,6 +3,7 @@ package com.immfly.immflychallenge.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -71,7 +72,8 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 
-	@Scheduled(cron = "0 * * * * ?")
+//	@Scheduled(cron = "0 * * * * ?")
+	@RabbitListener(queues = "flight-queue")
 	@Transactional
 	private void checkForFlightsProcess() {
 		flightsClient.getFlights();
