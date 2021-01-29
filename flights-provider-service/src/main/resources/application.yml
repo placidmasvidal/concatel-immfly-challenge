@@ -1,0 +1,24 @@
+server:
+  port: 9090
+
+---
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 4
+        max-concurrency: 8
+    
+flight:
+   exchange:
+      name: flight-exchange
+      
+   queue:
+      name: flight-queue
+   routing:
+      name: flight-routing-key

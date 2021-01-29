@@ -5,10 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,10 +27,10 @@ public class FlightController {
 	@Autowired
 	private AmqpTemplate rabbitTemplate;
 
-	@Value("${jsa.rabbitmq.exchange}")
+	@Value("${flight.exchange.name}")
 	private String exchange;
 	
-	@Value("${jsa.rabbitmq.routingkey}")
+	@Value("${flight.routing.name}")
 	private String routingKey;
 	
 	@Autowired
@@ -51,13 +51,14 @@ public class FlightController {
 */
 
 	@RequestMapping("/v1/flights-to-queue/")
+	@Scheduled(cron = "0 * * * * ?")
 	public @ResponseBody void sentFlightsToQueue() throws IOException {
 		produce(flightProviderService.retrieveFlights());
 	}
 	
 	private void produce(List<RyanairFlightDto> flights){
 		rabbitTemplate.convertAndSend(exchange, routingKey, flights);
-		System.out.println("Send msg = " + flights);
+		flights.forEach(flight -> LOGGER.info("Sending flight with flightNumber: {}", flight.getFlightNumber()));
 	}
 	
 	
